@@ -24,13 +24,13 @@ public class Main {
             String surname = lineScanner.next();
             int age = Integer.parseInt(lineScanner.next());
             boolean gender = lineScanner.next().equals("Male");
-            List<Integer> grades = new ArrayList<>();
+
+            Student student = new Student(name, surname, age, gender);
 
             while (lineScanner.hasNextInt()) {
-                grades.add(lineScanner.nextInt());
+                student.addGrade(lineScanner.nextInt());
             }
 
-            Student student = new Student(name, surname, age, gender, grades);
 
             students.add(student);
         }
@@ -56,6 +56,13 @@ public class Main {
         School hogwarts = new School();
 
         for (Teacher teacher : teachers) {
+            if ((teacher.getYearsOfExperience() >= 10) && (teacher.getYearsOfExperience() < 20)) {
+                teacher.giveRaise(10);
+            } else if ((teacher.getYearsOfExperience() >= 20) && (teacher.getYearsOfExperience() < 40)) {
+                teacher.giveRaise(25);
+            } else if (teacher.getYearsOfExperience() >= 40) {
+                teacher.giveRaise(50);
+            }
             hogwarts.addMember(teacher);
         }
         for (Student student : students) {

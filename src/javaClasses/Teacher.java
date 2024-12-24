@@ -50,5 +50,7 @@ public class Teacher extends Person {
         return super.toString() + " I teach %s".formatted(subject);
     }
 
-
+    public void giveRaise(float percentage) {
+        salary += (int)(salary * (percentage / 100));
+    }
 }
